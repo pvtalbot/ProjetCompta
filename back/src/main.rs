@@ -5,13 +5,12 @@ use sqlx::PgPool;
 async fn main() {
     dotenvy::dotenv().ok();
 
-    let database_url = std::env::var("DATABASE_URL")
-        .expect("DATABASE_URL variable must be set in the .env file");
+    let database_url =
+        std::env::var("DATABASE_URL").expect("DATABASE_URL variable must be set in the .env file");
 
     let pool = PgPool::connect(&database_url)
         .await
         .expect("Failed to connect to the database");
-
     println!("✅ Database connected successfully!");
 
     // The Router automatically infers Router<PgPool> thanks to .with_state(pool)

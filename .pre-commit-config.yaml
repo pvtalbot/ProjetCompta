@@ -1,6 +1,6 @@
 repos:
   - repo: https://github.com/doublify/pre-commit-rust
-    rev: v1.4.0
+    rev: v1.0
     hooks:
       - id: fmt
         name: Rustfmt (formatage)
@@ -11,7 +11,7 @@ repos:
         args: ["--", "-D", "warnings"]
 
   - repo: https://github.com/compilerla/conventional-pre-commit
-    rev: v4.0.0
+    rev: v4.4.0
     hooks:
       - id: conventional-pre-commit
         name: Conventional commits check
