@@ -1,4 +1,5 @@
 use axum::{Router, extract::State, routing::get};
+use back::auth;
 use sqlx::PgPool;
 
 #[tokio::main]
@@ -17,6 +18,7 @@ async fn main() {
     let app = Router::new()
         .route("/", get(welcome))
         .route("/status", get(check_db_status))
+        .nest("/api/auth", auth::router())
         .with_state(pool);
 
     let listener = tokio::net::TcpListener::bind("127.0.0.1:3000")
